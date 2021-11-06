@@ -1,0 +1,22 @@
+﻿<div class="container">
+    <form class="form-inline">
+        <div class="form-group mx-sm-3 mb-2">
+            <label for="inputPassword2" class="sr-only">Product</label>
+            <input type="text" class="form-control" id="inputPassword2" @bind-value="filter" />
+        </div>
+        <button type="button" @onclick="HandleButton" class="btn btn-primary mb-2">Serach</button>
+
+    </form>
+@filter
+</div>
+
+@code {
+    private string filter;
+    [Parameter]
+    public EventCallback<string> OnSearch { get; set; }
+
+    private void HandleButton()
+    {
+        OnSearch.InvokeAsync(filter);
+    }
+}
