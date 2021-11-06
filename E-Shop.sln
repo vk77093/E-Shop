@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eshop.CoreBussiness", "esho
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShop.UseCases", "eShop.UseCases\eShop.UseCases.csproj", "{F34CE0A7-4AC0-4F6D-9ED0-8CFC057B77AE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShop.DataStore.HardCoded", "eShop.DataStore.HardCoded\eShop.DataStore.HardCoded.csproj", "{55430BBD-0528-4430-A618-AC89838E354A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{F34CE0A7-4AC0-4F6D-9ED0-8CFC057B77AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F34CE0A7-4AC0-4F6D-9ED0-8CFC057B77AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F34CE0A7-4AC0-4F6D-9ED0-8CFC057B77AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55430BBD-0528-4430-A618-AC89838E354A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55430BBD-0528-4430-A618-AC89838E354A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55430BBD-0528-4430-A618-AC89838E354A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55430BBD-0528-4430-A618-AC89838E354A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

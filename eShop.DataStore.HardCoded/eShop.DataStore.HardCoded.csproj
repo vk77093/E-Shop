@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\eshop.CoreBussiness\eshop.CoreBussiness.csproj" />
-    <ProjectReference Include="..\eShop.DataStore.HardCoded\eShop.DataStore.HardCoded.csproj" />
     <ProjectReference Include="..\eShop.UseCases\eShop.UseCases.csproj" />
   </ItemGroup>
 
