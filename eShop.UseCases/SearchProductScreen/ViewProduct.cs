@@ -1,4 +1,5 @@
 ﻿using eshop.CoreBussiness.Models;
+using eShop.UseCases.PluginInterface.DataStore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,14 @@ namespace eShop.UseCases.SearchProductScreen
 {
     public class ViewProduct : IViewProduct
     {
-        public Product Execute(string filter)
+        private readonly IProductRepository productRepository;
+        public ViewProduct(IProductRepository productRepository)
         {
-            return null;
+            this.productRepository = productRepository;
+        }
+        public Product Execute(int id)
+        {
+            return productRepository.GetProduct(id);
         }
     }
 }

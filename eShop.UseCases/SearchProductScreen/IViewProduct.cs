@@ -9,6 +9,6 @@ namespace eShop.UseCases.SearchProductScreen
 {
   public  interface IViewProduct
     {
-        public Product Execute(string filter);
+        public Product Execute(int id);
     }
 }
