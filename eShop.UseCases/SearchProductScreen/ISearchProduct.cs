@@ -9,7 +9,7 @@ namespace eShop.UseCases.SearchProductScreen
 {
   public  interface ISearchProduct
     {
-        public IEnumerable<Product> Execute(string filter);
+        public IEnumerable<Product> Execute(string filter = null);
         
     }
 }

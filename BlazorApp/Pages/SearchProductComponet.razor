@@ -1,7 +1,12 @@
 ﻿@page "/product"
+@inject ISearchProduct searchProduct
 
 <h3>SearchProductComponet</h3>
 
-@code {
-
+@code {      
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        var products = searchProduct.Execute();
+    }
 }
