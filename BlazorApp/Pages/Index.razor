@@ -30,6 +30,10 @@
         </div>
     </div>
 </div>
+<div class="container mt-2">
+    <VisibiltyComponent @ref="visibilty"/>
+    <button @onclick="Toggle">Toggle The Visbility Components</button>
+</div>
 
 @code{
     private Product product = new Product { Id = 2, Name = "Black Carbon", Brand = "Lakme" };
@@ -42,4 +46,11 @@
         new Product {Id=401,Name="Mayblien",Brand="tested"},
         new Product {Id=402,Name="Test Eyeliner", Brand="Lets barnad"},
     };
+
+    //for the ref use of the components
+    private VisibiltyComponent visibilty { get; set; }
+    private void Toggle()
+    {
+        this.visibilty.SetVisibility();
+    }
 }
