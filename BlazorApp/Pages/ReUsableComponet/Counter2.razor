@@ -1,0 +1,8 @@
+﻿<div class="ml-5">
+    <h3>Counter 2</h3>
+    <p>The Counter value form cascade is :@countCascadeValue </p>
+</div>
+@code {
+    [CascadingParameter(Name = "counterValue")]
+    public int countCascadeValue { get; set; }
+}
