@@ -1,0 +1,28 @@
+﻿@typeparam ITem
+
+<div class="container">
+    @header
+    <p>Demostartion of the Render Fragment Header and Footer is showing by That</p>
+    <div class="list-group-item">
+@foreach(var itemData in items)
+            {
+               @RepeaterItem(itemData)
+            }
+    </div>
+    @footer
+</div>
+
+@code {
+    [Parameter]
+    public RenderFragment header { get; set; }
+    [Parameter]
+    public RenderFragment footer { get; set; }
+
+    //for showing the list of item
+    [Parameter]
+    public List<ITem> items { get; set; }
+
+    [Parameter]
+    public RenderFragment<ITem> RepeaterItem { get; set; }
+
+}

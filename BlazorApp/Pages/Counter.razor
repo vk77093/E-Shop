@@ -7,6 +7,17 @@
 </CascadingValue>
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+ 
+<div class="mt2">
+    <RenderTemplateComponet ITem="Product" items="productItem">
+        <header>The Header Section is Here from componet</header>
+        <footer>The Footer Section is Here with Componets</footer>
+        <RepeaterItem Context="productItem">
+            id :@productItem.Id
+            Name : @productItem.Name
+        </RepeaterItem>
+    </RenderTemplateComponet>
+</div>
 
 @code {
     private int currentCount = 0;
@@ -15,4 +26,10 @@
     {
         currentCount++;
     }
+    private Product Product { get; set; }
+    private List<Product> productItem = new List<Product>
+    {
+        new Product {Id=401,Name="hfhgehfhw"},
+        new Product {Id=402,Name="rrefreghfer"},
+    };
 }
