@@ -1,0 +1,22 @@
+﻿@page "/custdepend/{id:int}"
+
+<h3>DependencyInjectionComponent</h3>
+<h2>The Getted Customer details is  @depen.Id
+    <br />
+    Name : @depen.CustName
+    <br />
+    Address : @depen.CustAddress
+    </h2>
+
+@code {
+    [Parameter]
+    public int id { get; set; }
+    private CustomerDepen depen { get; set; }
+    CustomerDepeRespo custSer = new CustomerDepeRespo();
+
+    protected override void OnParametersSet()
+    {
+        depen= custSer.GetCustomer(id);
+        base.OnParametersSet();
+    }
+}
