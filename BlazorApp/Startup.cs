@@ -46,6 +46,8 @@ namespace BlazorApp
             services.AddScoped<IShoppingCartSateStore, ShoppingCartStateStore>();
             services.AddTransient<IAddProductToUseCase, AddProductToUseCase>();
             services.AddTransient<IShoppingCartUseCase, ShoppingCartUseCase>();
+            services.AddTransient<IDeleteProductUseCase, DeleteProductUseCase>();
+            services.AddTransient<IUpdateQuantityUseCase, UpdateQuantityUseCase>();
 
             
         }

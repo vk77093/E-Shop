@@ -1,4 +1,7 @@
-﻿@if(LineItem !=null && LineItem.Product != null)
+﻿@inject IDeleteProductUseCase deleteProductUseCase
+@inject IUpdateQuantityUseCase updateQtyUseCase
+
+@if(LineItem !=null && LineItem.Product != null)
             {
 <li class="row">
     <div class="col">
@@ -24,12 +27,29 @@
     [Parameter]
     public OrderLineItem LineItem { get; set; }
 
+    [Parameter]
+    public EventCallback<Order> OnDeleteProduct { get; set; }
+    [Parameter]
+    public EventCallback<Order> OnUpdateProduct { get; set; }
+
     private async void HandleQuantityChange(ChangeEventArgs e)
+    {
+        if (e.Value == null || string.IsNullOrWhiteSpace(e.Value.ToString())) return;
+        int qty = 0;
+        if(int.TryParse(e.Value.ToString(),out qty))
         {
-
+            if(qty < 0)
+            {
+                return;
+            }
         }
+        var orderUpdate = await updateQtyUseCase.UpdateExecute(LineItem.ProductId, qty);
+        await OnUpdateProduct.InvokeAsync(orderUpdate);
+    }
     private async void DeleteProduct(int productId)
-        {
+    {
+        var orderDel = await deleteProductUseCase.DeleteExecute(productId);
+        await OnDeleteProduct.InvokeAsync(orderDel);
 
-        }
+    }
 }

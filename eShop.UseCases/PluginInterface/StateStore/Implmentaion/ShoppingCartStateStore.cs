@@ -25,7 +25,12 @@ namespace eShop.UseCases.PluginInterface.StateStore.Implmentaion
 
         public void UpdateLineItemsCount()
         {
-            this.BroadCastSateChange();
+            base.BroadCastSateChange();
+        }
+
+        public void UpdateProductQuantity()
+        {
+            base.BroadCastSateChange();
         }
     }
 }
