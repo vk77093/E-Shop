@@ -1,0 +1,65 @@
+﻿<div class="card m-2" style="width: 25rem;">
+    <div class="card-body">
+        <h5 class="card-title">Order Summary</h5>
+        <div class="card-text d-flex justify-content-between">
+            <div>
+                Items (@itemsCount):
+            </div>
+            <div>
+                @ItemsTotalPrice.ToString("c")
+            </div>
+        </div>
+        <div class="card-text d-flex justify-content-between">
+            <div>
+                Shipping And Handling:
+            </div>
+            <div>
+                <text>$0.00</text>
+            </div>
+        </div>
+        <div class="card-text d-flex justify-content-between">
+            <div>
+                Estimated Tax:
+            </div>
+            <div>
+                <text>$0.00</text>
+            </div>
+        </div>
+        <hr />
+        <div class="card-text d-flex justify-content-between" style="color:darkred">
+            <div>
+                <b>Order Total:</b>
+            </div>
+            <div>
+                <b>@ItemsTotalPrice.ToString("c")</b>
+            </div>
+        </div>
+    </div>
+    @if (!HidePlaceOrderButton)
+    {
+        <button class="button btn-primary" @onclick="PlaceOrder">Place your order</button>
+    }
+</div>
+
+@code {
+    private int itemsCount = 0;
+    private double ItemsTotalPrice = 0;
+    [Parameter]
+    public Order Order { get; set; }
+    [Parameter]
+    public bool HidePlaceOrderButton { get; set; } = false;
+
+    protected override void OnParametersSet()
+    {
+        if (Order != null)
+        {
+            itemsCount = Order.LineItems.Count;
+            ItemsTotalPrice = 0;
+            Order.LineItems.ForEach(x => ItemsTotalPrice += x.Price * x.Quantity);
+        }
+    }
+    private void PlaceOrder()
+    {
+
+    }
+}

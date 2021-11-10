@@ -3,6 +3,7 @@ using eShop.DataStore.HardCoded;
 using eShop.ShoppingCart.LocalStorage;
 using eShop.UseCases.PluginInterface.DataStore;
 using eShop.UseCases.SearchProductScreen;
+using eShop.UseCases.ShoppingCartScreen;
 using eShop.UseCases.UI;
 using eShop.UseCases.ViewProductScreen;
 using Microsoft.AspNetCore.Builder;
@@ -40,6 +41,7 @@ namespace BlazorApp
             services.AddTransient<IViewProduct, ViewProduct>();
             services.AddScoped<IShoppingCart, ShoppingCart>();
             services.AddTransient<IAddProductToUseCase, AddProductToUseCase>();
+            services.AddTransient<IShoppingCartUseCase, ShoppingCartUseCase>();
 
             
         }

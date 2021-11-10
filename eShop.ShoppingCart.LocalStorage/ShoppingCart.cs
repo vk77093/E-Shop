@@ -64,7 +64,7 @@ namespace eShop.ShoppingCart.LocalStorage
 
         public async Task<Order> UpdateQuantity(int id, int qty)
         {
-            var order = await GetOrder();
+            var order = await GetOrders();
             if (qty < 0)
                 return order;
             else if (qty == 0)
