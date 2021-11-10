@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace eShop.UseCases.PluginInterface.DataStore
 {
-  public  interface IProductRepository
+  public interface IProductRepository
     {
         public IEnumerable<Product> GetProducts(string filter);
         public Product GetProduct(int id);

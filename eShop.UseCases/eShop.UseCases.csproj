@@ -8,4 +8,8 @@
     <ProjectReference Include="..\eshop.CoreBussiness\eshop.CoreBussiness.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ViewProductScreen\InterFaces\" />
+  </ItemGroup>
+
 </Project>
