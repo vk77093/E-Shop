@@ -1,7 +1,10 @@
 using BlazorApp.Data;
 using eShop.DataStore.HardCoded;
+using eShop.ShoppingCart.LocalStorage;
 using eShop.UseCases.PluginInterface.DataStore;
 using eShop.UseCases.SearchProductScreen;
+using eShop.UseCases.UI;
+using eShop.UseCases.ViewProductScreen;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
@@ -35,6 +38,10 @@ namespace BlazorApp
             services.AddTransient<IProductRepository, ProductRepository>();
             services.AddTransient<ISearchProduct, SearchProduct>();
             services.AddTransient<IViewProduct, ViewProduct>();
+            services.AddScoped<IShoppingCart, ShoppingCart>();
+            services.AddTransient<IAddProductToUseCase, AddProductToUseCase>();
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

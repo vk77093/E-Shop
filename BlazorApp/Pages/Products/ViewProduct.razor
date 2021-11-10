@@ -1,5 +1,8 @@
 ﻿@page "/product/{id:int}"
 @inject IViewProduct viewProduct
+@inject IAddProductToUseCase addProductToUsecase
+@inject NavigationManager Nvm
+ 
 <div class="container">
     <div class="card">
         <div class="card-header">
@@ -17,6 +20,8 @@
             <p>@product.Price</p>
         </div>
     </div>
+    <br />
+    <button class="btn btn-outline-primary" @onclick="AddToCart">Add To Cart</button>
     <a href="/product" class="btn btn-info btn-lg">Back To Product</a>
 </div>
 
@@ -32,4 +37,10 @@
             product = viewProduct.Execute(id);
         }
     }
+    public void AddToCart()
+        {
+        addProductToUsecase.Execute(product.Id);
+        Nvm.NavigateTo("/product");
+
+        }
 }
