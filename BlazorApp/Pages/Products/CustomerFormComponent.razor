@@ -1,0 +1,48 @@
+﻿<EditForm Model="customer" class="form-inline" OnValidSubmit="HandleFormSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div class="form-group">
+        <label>Customer Name</label>
+        <InputText @bind-Value="customer.CustomerName" class="form-control"></InputText>
+    </div>
+    <div class="form-group">
+        <label>Customer Address</label>
+        <InputText @bind-Value="customer.CustomerAddress" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Customer Country</label>
+        <InputText @bind-Value="customer.CustomerCountry" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Customer State</label>
+        <InputText @bind-Value="customer.CustomerState" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Customer City</label>
+        <InputText @bind-Value="customer.CustomerCity" class="form-control" />
+    </div>
+   
+        <button type="submit" class="btn btn-success btn-lg">Place Your Order</button>
+    
+</EditForm>
+
+@code {
+    private CustomerVM customer;
+
+    [Parameter]
+    public EventCallback<CustomerVM> OnCustomerInputSubmit { get; set; }
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        customer = new CustomerVM();
+        //if (customer != null)
+        //{
+        //    //some error
+        //}
+    }
+    private void HandleFormSubmit()
+    {
+        OnCustomerInputSubmit.InvokeAsync(customer);
+    }
+}

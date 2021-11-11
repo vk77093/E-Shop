@@ -1,4 +1,5 @@
 using BlazorApp.Data;
+using eshop.CoreBussiness.Service;
 using eShop.DataStore.HardCoded;
 using eShop.ShoppingCart.LocalStorage;
 using eShop.UseCases.PluginInterface.DataStore;
@@ -38,6 +39,9 @@ namespace BlazorApp
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
+            //adding for Order processed
+            services.AddSingleton<IOrderRespository, OrderRepository>();
+
             services.AddTransient<IProductRepository, ProductRepository>();
             services.AddTransient<ISearchProduct, SearchProduct>();
             services.AddTransient<IViewProduct, ViewProduct>();
@@ -50,6 +54,7 @@ namespace BlazorApp
             services.AddTransient<IUpdateQuantityUseCase, UpdateQuantityUseCase>();
             //for adding the place order
             services.AddTransient<IPlaceOrderUseCase, PlaceOrderUseCase>();
+            services.AddTransient<IOrderService, OrderService>();
 
             
         }

@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShop.Web.Modules", "eShop.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShop.Web.Common", "eShop.Web.Common\eShop.Web.Common.csproj", "{EF35ED21-C53A-4E77-9BC9-5D5A5220C880}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShop.ShoppingCart.LocalStorage", "eShop.ShoppingCart.LocalStorage\eShop.ShoppingCart.LocalStorage.csproj", "{71C0C976-45A7-4746-A9B4-088065160FEF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShop.ShoppingCart.LocalStorage", "eShop.ShoppingCart.LocalStorage\eShop.ShoppingCart.LocalStorage.csproj", "{71C0C976-45A7-4746-A9B4-088065160FEF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -33,16 +33,23 @@ namespace eShop.UseCases.ShoppingCartScreen
         }
         public async Task<string> PlaceOrderExecute(Order order)
         {
+            
+            await shoppingCart.UpdateOrder(order);
             if (orderService.ValidateCreateOrder(order))
             {
                 order.DatePlaced = DateTime.Now;
                 order.UniqueId = Guid.NewGuid().ToString();
                 int orderId = orderRepository.CreateOrder(order);
+                order = orderRepository.GetOrder(orderId);
+
                 await shoppingCart.EmptyOrder();
-                shoppingCartStateStore.UpdateLineItemsCount();
+                this.shoppingCartStateStore.UpdateLineItemsCount();
+
                 return order.UniqueId;
             }
+
             return null;
         }
     }
+    
 }

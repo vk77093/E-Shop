@@ -1,0 +1,55 @@
+﻿@page "/placeorder"
+
+
+@inject IShoppingCartUseCase shoppingCartUseCase
+@inject IPlaceOrderUseCase placeOrderUseCase
+@inject NavigationManager nvm
+<h3>PlaceOrder</h3>
+@if (order != null)
+{
+    <div class="row">
+        <div class="col">
+            <!--Customer Collection info-->
+            <CustomerFormComponent OnCustomerInputSubmit="HandleOnCustomerValidSubmit"></CustomerFormComponent>
+        </div>
+        <div class="col">
+            <!--Order Summary Details with hide button-->
+            <OrderSummaryComp Order="order" HidePlaceOrderButton="true"></OrderSummaryComp>
+        </div>
+    </div>
+}
+
+
+@code {
+    private Order order;
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            order = await shoppingCartUseCase.Execute();
+            StateHasChanged();
+        }
+    }
+    private async void HandleOnCustomerValidSubmit(CustomerVM customer)
+    {
+        var mapper = new AutoMapper.MapperConfiguration(confg => confg.CreateMap<CustomerVM, Order>()).CreateMapper();
+        mapper.Map<CustomerVM, Order>(customer, order);
+         var orderUniqueId = await placeOrderUseCase.PlaceOrderExecute(order);
+        //var orderUniqueId = "ABC55466546645";
+        if (string.IsNullOrWhiteSpace(orderUniqueId))
+        {
+            //error message
+            Console.WriteLine("the Button got clicked with some error");
+            Console.ReadLine();
+            nvm.NavigateTo($"/orderconfirm/{orderUniqueId}");
+        }
+        else
+        {
+            Console.WriteLine("the Button got clicked");
+            Console.ReadLine();
+            nvm.NavigateTo($"/orderconfirm/{orderUniqueId}");
+        }
+
+
+    }
+}
