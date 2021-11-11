@@ -48,6 +48,8 @@ namespace BlazorApp
             services.AddTransient<IShoppingCartUseCase, ShoppingCartUseCase>();
             services.AddTransient<IDeleteProductUseCase, DeleteProductUseCase>();
             services.AddTransient<IUpdateQuantityUseCase, UpdateQuantityUseCase>();
+            //for adding the place order
+            services.AddTransient<IPlaceOrderUseCase, PlaceOrderUseCase>();
 
             
         }

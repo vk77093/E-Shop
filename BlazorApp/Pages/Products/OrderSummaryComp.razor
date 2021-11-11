@@ -1,4 +1,6 @@
-﻿<div class="card m-2" style="width: 25rem;">
+﻿@inject NavigationManager nvm
+
+<div class="card m-2" style="width: 25rem;">
     <div class="card-body">
         <h5 class="card-title">Order Summary</h5>
         <div class="card-text d-flex justify-content-between">
@@ -60,6 +62,6 @@
     }
     private void PlaceOrder()
     {
-
+        nvm.NavigateTo("/placeorder");
     }
 }
