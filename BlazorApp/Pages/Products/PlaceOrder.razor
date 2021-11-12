@@ -34,19 +34,19 @@
     {
         var mapper = new AutoMapper.MapperConfiguration(confg => confg.CreateMap<CustomerVM, Order>()).CreateMapper();
         mapper.Map<CustomerVM, Order>(customer, order);
-         var orderUniqueId = await placeOrderUseCase.PlaceOrderExecute(order);
+        var orderUniqueId = await placeOrderUseCase.PlaceOrderExecute(order);
         //var orderUniqueId = "ABC55466546645";
         if (string.IsNullOrWhiteSpace(orderUniqueId))
         {
             //error message
             Console.WriteLine("the Button got clicked with some error");
             Console.ReadLine();
-            nvm.NavigateTo($"/orderconfirm/{orderUniqueId}");
+            //nvm.NavigateTo($"/orderconfirm/{orderUniqueId}");
         }
         else
         {
-            Console.WriteLine("the Button got clicked");
-            Console.ReadLine();
+            //Console.WriteLine("the Button got clicked");
+            //Console.ReadLine();
             nvm.NavigateTo($"/orderconfirm/{orderUniqueId}");
         }
 

@@ -11,10 +11,7 @@ using System.Threading.Tasks;
 
 namespace eShop.UseCases.ShoppingCartScreen
 {
-    public interface IPlaceOrderUseCase
-    {
-        Task<string> PlaceOrderExecute(Order order);
-    }
+
 
     public class PlaceOrderUseCase : IPlaceOrderUseCase
     {
@@ -33,7 +30,7 @@ namespace eShop.UseCases.ShoppingCartScreen
         }
         public async Task<string> PlaceOrderExecute(Order order)
         {
-            
+
             await shoppingCart.UpdateOrder(order);
             if (orderService.ValidateCreateOrder(order))
             {
@@ -51,5 +48,5 @@ namespace eShop.UseCases.ShoppingCartScreen
             return null;
         }
     }
-    
+
 }

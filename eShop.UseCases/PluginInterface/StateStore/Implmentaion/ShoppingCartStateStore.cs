@@ -28,7 +28,12 @@ namespace eShop.UseCases.PluginInterface.StateStore.Implmentaion
             base.BroadCastSateChange();
         }
 
-        public void UpdateProductQuantity()
+        //public void UpdateProductQuantity()
+        //{
+        //    base.BroadCastSateChange();
+        //}
+
+        void IShoppingCartSateStore.UpdateProductQuantity()
         {
             base.BroadCastSateChange();
         }

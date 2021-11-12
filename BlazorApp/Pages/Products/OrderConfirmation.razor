@@ -1,0 +1,45 @@
+﻿@page "/orderconfirm/{uniqueId}"
+@inject IViewOrderConfirmationUseCase viewOrderConfirmation
+
+<h3>OrderConfirmation</h3>
+<p>
+    <b>Shipping Info</b>
+</p>
+<p>@order.CustomerName</p>
+<p>@order.CustomerAddress</p>
+<p>@order.CustomerCity</p>
+<p>@order.CustomerCountry</p>
+<p>@order.CustomerStateProvince</p>
+<br />
+<OrderSummaryComp Order="order" HidePlaceOrderButton="true"></OrderSummaryComp>
+<br />
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            @foreach(var pro in order.LineItems)
+            {
+                <td>@pro.Product.Name</td>
+                <td>@pro.Quantity</td>
+                <td>@pro.Price</td>
+            }
+        </tr>
+    </tbody>
+</table>
+@code {
+    private Order order;
+    [Parameter]
+    public string uniqueId { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        order = viewOrderConfirmation.ViewOrderExecute(uniqueId);
+        base.OnParametersSet();
+    }
+}

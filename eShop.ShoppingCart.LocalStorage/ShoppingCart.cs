@@ -42,7 +42,7 @@ namespace eShop.ShoppingCart.LocalStorage
 
         public Task EmptyOrder()
         {
-            throw new NotImplementedException();
+            return this.SetOrder(null);
         }
 
         public async Task<Order> GetOrder()

@@ -15,7 +15,7 @@ namespace BlazorApp.ViewModels
         [Required]
         public string CustomerCity { get; set; }
         [Required]
-        public string CustomerState { get; set; }
+        public string CustomerStateProvince { get; set; }
         [Required]
         public string CustomerCountry { get; set; }
 

@@ -55,6 +55,7 @@ namespace BlazorApp
             //for adding the place order
             services.AddTransient<IPlaceOrderUseCase, PlaceOrderUseCase>();
             services.AddTransient<IOrderService, OrderService>();
+            services.AddTransient<IViewOrderConfirmationUseCase, ViewOrderConfirmationUseCase>();
 
             
         }
