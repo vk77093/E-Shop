@@ -1,13 +1,15 @@
 ﻿@page "/processedorder"
 @inject IViewProcessedOrderUseCase viewProcessedOrderUseCase
 
+@attribute [Authorize]
+
 <h3>ProcessedOrder</h3>
-<OrderListComponent OrdersParam="orderProcessed"/>
+<OrderListComponent OrdersParam="orderProcessed" />
 @code {
     private IEnumerable<Order> orderProcessed;
-        protected override void OnInitialized()
-        {
-            base.OnInitialized();
-       orderProcessed=viewProcessedOrderUseCase.ExecuteViewProcessedOrder();
-        }
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        orderProcessed = viewProcessedOrderUseCase.ExecuteViewProcessedOrder();
+    }
 }

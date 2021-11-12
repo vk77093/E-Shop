@@ -2,6 +2,8 @@
 @inject IViewOrderDetailsUseCase viewOrderDetailsUsecase
 @inject IProcessedOrderUseCase processedOrderUseCase
 @inject NavigationManager Nvm
+
+@attribute [Authorize]
 <h3>OrderDetails</h3>
 @if (orderData != null)
 {
@@ -21,14 +23,14 @@
             </tr>
         </thead>
         <tbody>
-            @foreach(var pro in orderData.LineItems)
-                {
-                    <tr>
-                        <td>@pro.Product.Name</td>
-                        <td>@pro.Price</td>
-                        <td>@pro.Quantity</td>
-                    </tr>
-                }
+            @foreach (var pro in orderData.LineItems)
+            {
+                <tr>
+                    <td>@pro.Product.Name</td>
+                    <td>@pro.Price</td>
+                    <td>@pro.Quantity</td>
+                </tr>
+            }
         </tbody>
     </table>
     <button type="button" class="btn btn-primary btn-lg" @onclick="HandleProcessedOrder">Make Order As Processed</button>
@@ -48,7 +50,7 @@
     }
     private void HandleProcessedOrder()
     {
-        if(orderData != null)
+        if (orderData != null)
         {
             processedOrderUseCase.ExecuteProcessedOrder(orderData.OrderId.Value, "Admin User Vijy");
             Nvm.NavigateTo("/outstandingorders");

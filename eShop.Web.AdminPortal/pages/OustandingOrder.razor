@@ -1,6 +1,8 @@
 ﻿@page "/outstandingorders"
 @inject IViewOutStadingOrderUseCase viewOutstandingOrderUseCase
 
+@attribute [Authorize]
+
 <h3>OustandingOrder</h3>
 <OrderListComponent OrdersParam="orders"></OrderListComponent>
 @code {
