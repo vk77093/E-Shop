@@ -39,6 +39,15 @@ namespace BlazorApp
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            //for adding Auth
+            services.AddControllers();
+            services.AddAuthentication(CookieCommon.CookieNameStatic)
+                .AddCookie(CookieCommon.CookieNameStatic,config=> {
+                    config.Cookie.Name = CookieCommon.CookieNameStatic;
+                    config.LoginPath = "/authenticate";
+                    
+                });
+
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
@@ -87,9 +96,15 @@ namespace BlazorApp
             app.UseStaticFiles();
 
             app.UseRouting();
+            //for Author
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
+                //for Author
+                endpoints.MapControllers();
+
                 endpoints.MapBlazorHub();
                 endpoints.MapFallbackToPage("/_Host");
             });
