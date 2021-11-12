@@ -1,0 +1,57 @@
+﻿@page "/orderdetails/{id:int}"
+@inject IViewOrderDetailsUseCase viewOrderDetailsUsecase
+@inject IProcessedOrderUseCase processedOrderUseCase
+@inject NavigationManager Nvm
+<h3>OrderDetails</h3>
+@if (orderData != null)
+{
+    <p><b>Customer Info :</b></p>
+    <p>@orderData.CustomerName</p>
+    <p>@orderData.CustomerAddress</p>
+    <p>@orderData.CustomerCountry</p>
+    <p>@orderData.CustomerStateProvince</p>
+    <p>@orderData.CustomerCity</p>
+    <br />
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var pro in orderData.LineItems)
+                {
+                    <tr>
+                        <td>@pro.Product.Name</td>
+                        <td>@pro.Price</td>
+                        <td>@pro.Quantity</td>
+                    </tr>
+                }
+        </tbody>
+    </table>
+    <button type="button" class="btn btn-primary btn-lg" @onclick="HandleProcessedOrder">Make Order As Processed</button>
+}
+
+@code {
+    [Parameter]
+    public int id { get; set; }
+    private Order orderData;
+    protected override void OnParametersSet()
+    {
+        if (id > 0)
+        {
+            orderData = viewOrderDetailsUsecase.ExecuteVieworder(id);
+        }
+
+    }
+    private void HandleProcessedOrder()
+    {
+        if(orderData != null)
+        {
+            processedOrderUseCase.ExecuteProcessedOrder(orderData.OrderId.Value, "Admin User Vijy");
+            Nvm.NavigateTo("outstandingorders");
+        }
+    }
+}
