@@ -22,15 +22,17 @@
         </tr>
     </thead>
     <tbody>
+
+        @foreach (var pro in order.LineItems)
+        {
         <tr>
-            @foreach(var pro in order.LineItems)
-            {
-                <td>@pro.Product.Name</td>
-                <td>@pro.Quantity</td>
-                <td>@pro.Price</td>
-            }
+            <td>@pro.Product.Name</td>
+            <td>@pro.Quantity</td>
+            <td>@pro.Price</td>
         </tr>
-    </tbody>
+                }
+            
+        </tbody>
 </table>
 @code {
     private Order order;

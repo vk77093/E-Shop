@@ -2,6 +2,9 @@ using BlazorApp.Data;
 using eshop.CoreBussiness.Service;
 using eShop.DataStore.HardCoded;
 using eShop.ShoppingCart.LocalStorage;
+using eShop.UseCases.AdminPortal.OrderDetailScreen;
+using eShop.UseCases.AdminPortal.OutstandingOrder;
+using eShop.UseCases.AdminPortal.ProcessedOrder;
 using eShop.UseCases.PluginInterface.DataStore;
 using eShop.UseCases.PluginInterface.StateStore;
 using eShop.UseCases.PluginInterface.StateStore.Implmentaion;
@@ -56,6 +59,12 @@ namespace BlazorApp
             services.AddTransient<IPlaceOrderUseCase, PlaceOrderUseCase>();
             services.AddTransient<IOrderService, OrderService>();
             services.AddTransient<IViewOrderConfirmationUseCase, ViewOrderConfirmationUseCase>();
+
+            //for Admin Portal
+            services.AddTransient<IViewOrderDetailsUseCase, ViewOrderDetailsUseCase>();
+            services.AddTransient<IViewOutStadingOrderUseCase, ViewOutStadingOrderUseCase>();
+            services.AddTransient<IProcessedOrderUseCase, ProcessedOrderUseCase>();
+            services.AddTransient<IViewProcessedOrderUseCase, ViewProcessedOrderUseCase>();
 
             
         }

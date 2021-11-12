@@ -1,0 +1,34 @@
+﻿
+@if (OrdersData != null)
+{
+    <tr>
+        <td>
+            @if (OrdersData.DatePlaced.HasValue)
+            {
+                @OrdersData.DatePlaced.Value.ToString("yyyy-MM-dd")
+            }
+        </td>
+        <td>
+            @if (!OrdersData.DateProcessed.HasValue)
+            {
+                <NavLink href="@($"processorder/{OrdersData.OrderId}")">
+                    @OrdersData.OrderId
+                </NavLink>
+            }
+            else
+            {
+                @OrdersData.OrderId
+            }
+        </td>
+        <td>@OrdersData.CustomerName</td>
+        <td>@OrdersData.CustomerCountry</td>
+        <td>@OrdersData.CustomerCity</td>
+        <td>@OrdersData.CustomerStateProvince</td>
+
+        <td>@OrdersData.CustomerAddress</td>
+    </tr>
+}
+@code {
+    [Parameter]
+    public Order OrdersData { get; set; }
+}
