@@ -26,6 +26,10 @@ namespace BlazorApp.Controllers
                 var userPrincipal = new ClaimsPrincipal(userIdentity);
                 await HttpContext.SignInAsync(CookieCommon.CookieNameStatic, userPrincipal);
             }
+            else
+            {
+                return Redirect("/errorpage");
+            }
             return Redirect("/outstandingorders");
         }
         [Route("/logout")]

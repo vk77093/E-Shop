@@ -6,9 +6,18 @@
 
         <div class="main">
             <div class="top-row px-4">
-                
-                <a href="/shoppingcart"><BlazorApp.Pages.Products.CartComponent/></a>
+
+                <a href="/shoppingcart"><BlazorApp.Pages.Products.CartComponent /></a>
+                <AuthorizeView>
+                    <Authorized>
+                        <NavLink href="/logout">Log Out</NavLink>
+                    </Authorized>
+                    <NotAuthorized>
+                        <NavLink href="/login">LogIN</NavLink>
+                    </NotAuthorized>
+                </AuthorizeView>
             </div>
+            
 
             <div class="content px-4">
                 @Body

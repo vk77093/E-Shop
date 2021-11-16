@@ -40,6 +40,14 @@
     [Parameter]
     public int id { get; set; }
     private Order orderData;
+    private AuthenticationState authState;
+    [CascadingParameter]
+    public Task<AuthenticationState> authStateTask { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        authState = await authStateTask;
+    }
     protected override void OnParametersSet()
     {
         if (id > 0)
@@ -52,7 +60,7 @@
     {
         if (orderData != null)
         {
-            processedOrderUseCase.ExecuteProcessedOrder(orderData.OrderId.Value, "Admin User Vijy");
+            processedOrderUseCase.ExecuteProcessedOrder(orderData.OrderId.Value, authState.User.Identity.Name);
             Nvm.NavigateTo("/outstandingorders");
         }
     }
